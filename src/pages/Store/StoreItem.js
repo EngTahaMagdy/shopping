@@ -5,7 +5,6 @@ export default function StoreItem({ data }) {
   const {allCart}=useCartState();
   const dispatch=useCartDispatch();
   useEffect(() => {
-    debugger
     dispatch({type:"getItemQuantity",payload:{...data}})
   }, [])
   const quantity=allCart.find(item=>item.id==data.id)?.quantity;
@@ -15,11 +14,11 @@ export default function StoreItem({ data }) {
         variant="top"
         src={data.imgUrl}
         height="300px"
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "contain" }}
       />
       <Card.Body>
         <Card.Title className="d-flex justify-content-between mb-4">
-          <span className="fs-2">{data.name}</span>
+          <span className="fs-4">{data.name}</span>
           <span className="text-muted">{data.price.toFixed(2)} $</span>
         </Card.Title>
 
