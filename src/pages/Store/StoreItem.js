@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { useCartDispatch, useCartState } from "../context/CartContext";
+import { useCartDispatch, useCartState } from "../../context/CartContext";
 export default function StoreItem({ data }) {
   const {allCart}=useCartState();
   const dispatch=useCartDispatch();

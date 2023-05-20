@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import items from "../data/items.json";
-import StoreItem from "../components/StoreItem";
+import items from "../../data/items.json";
+import StoreItem from "./StoreItem";
 export const Store = () => {
   const [data, setData] = useState(items);
   const allItems =
