@@ -3,9 +3,10 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Store } from "./pages/Store";
 import Navbar from "./components/Navbar";
+import { CartProvider } from "./context/CartContext";
 function App() {
   return (
-    <>
+    <CartProvider>
       <Navbar />
       <div className="container">
         <Routes>
@@ -14,7 +15,7 @@ function App() {
           <Route path="/store" element={<Store />} />
         </Routes>
       </div>
-    </>
+    </CartProvider>
   );
 }
 
