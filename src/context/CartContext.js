@@ -1,53 +1,86 @@
 import React, { createContext, useContext, useReducer } from "react";
 const CartContext = createContext();
 const CartDispatchContext = createContext();
-const initialState = [];
+const initialState = {
+  allCart: [],
+  myCart: [],
+  isOpen: false,
+};
 
 function cartReducer(state, action) {
   switch (action.type) {
     case "getItemQuantity": {
-      if (state?.find((item) => item.id === action.payload.id) === undefined) {
-        return [...state, { id: action.payload.id, quantity: 0 }];
-      } else {
-        return [
+      if (
+        state.allCart?.find((item) => item.id === action.payload.id) ===
+        undefined
+      ) {
+        return {
           ...state,
-          {
-            id: action.payload.id,
-            quantity: state.find((item) => item.id === action.payload.id)
-              ?.quantity,
-          },
-        ];
+          allCart: [
+            ...state.allCart,
+            {
+              ...action.payload,
+              quantity: 0,
+            },
+          ],
+        };
+      } else {
+        return {
+          ...state,
+          allCart: [
+            ...state.allCart,
+            {
+                ...action.payload,
+              quantity: state.find((item) => item.id === action.payload.id)
+                ?.quantity,
+            },
+          ],
+        };
       }
     }
     case "increaseCartQuantity": {
-      let clone = state;
-      let cloneItemIndex = clone.findIndex((item) => item.id === action.payload.id);
+      let clone = state.allCart;
+      let cloneItemIndex = clone.findIndex(
+        (item) => item.id === action.payload.id
+      );
       clone[cloneItemIndex] = {
-        id: action.payload.id,
+        ...action.payload,
         quantity:
-          state.find((item) => item.id === action.payload.id)?.quantity + 1,
+          clone.find((item) => item.id === action.payload.id)?.quantity + 1,
       };
-      return [...clone];
+      return { ...state, allCart: [...clone] };
     }
     case "decreaseCartQuantity": {
-        let clone = state;
-        let cloneItemIndex = clone.findIndex((item) => item.id === action.payload.id);
-        clone[cloneItemIndex] = {
-          id: action.payload.id,
-          quantity:
-            state.find((item) => item.id === action.payload.id)?.quantity - 1,
-        };
-        return [...clone];
-      }
-      case "getMyCart":{
-        // debugger
-        // let x=state.filter((item) => item.quantity > 0)
-        // console.log("x",x)
-        // return x
-      }
-    // case "setAllQuantity":{
-    //     //return state.reduce((curr,next)=>curr+next.quantity,0)
-    // }  
+      let clone = state.allCart;
+      let cloneItemIndex = clone.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      clone[cloneItemIndex] = {
+        ...action.payload,
+        quantity:
+          clone.find((item) => item.id === action.payload.id)?.quantity - 1,
+      };
+      return { ...state, allCart: [...clone] };
+    }
+    case "getMyCart": {
+      debugger;
+      let cart = state.allCart.filter((item) => item.quantity > 0);
+
+      return { ...state, myCart: cart };
+    }
+    case "getAllQuantity": {
+      let sumQuantity = state.allCart.reduce(
+        (curr, next) => curr + next.quantity,
+        0
+      );
+      return { ...state, sumAllQuantity: sumQuantity };
+    }
+    case "openCart": {
+      return { ...state, isOpen: true };
+    }
+    case "closeCart": {
+      return { ...state, isOpen: false };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }

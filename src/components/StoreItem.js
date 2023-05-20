@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useCartDispatch, useCartState } from "../context/CartContext";
 export default function StoreItem({ data }) {
-  const state=useCartState();
+  const {allCart}=useCartState();
   const dispatch=useCartDispatch();
   useEffect(() => {
-    dispatch({type:"getItemQuantity",payload:{id:data.id}})
+    debugger
+    dispatch({type:"getItemQuantity",payload:{...data}})
   }, [])
-  const quantity=state.find(item=>item.id==data.id)?.quantity;
+  const quantity=allCart.find(item=>item.id==data.id)?.quantity;
   return (
     <Card>
       <Card.Img
@@ -25,9 +26,8 @@ export default function StoreItem({ data }) {
         {quantity===0 ? (
           <Button
             variant="primary w-100"
-            //onClick={() => setIsBuy((prev) => !prev)}
             onClick={()=>{
-                dispatch({type:"increaseCartQuantity",payload:{id:data.id}})
+                dispatch({type:"increaseCartQuantity",payload:{...data}})
             }}
           >
             + Add To Cart
@@ -36,14 +36,14 @@ export default function StoreItem({ data }) {
           <div className="d-flex justify-content-between w-50 m-auto">
             <button
               className="btn btn-primary"
-              onClick={() => dispatch({type:"decreaseCartQuantity",payload:{id:data.id}})}
+              onClick={() => dispatch({type:"decreaseCartQuantity",payload:{...data}})}
             >
               -
             </button>
             <span className="mt-2">{quantity} in cart</span>
             <button
               className="btn btn-primary"
-              onClick={() => dispatch({type:"increaseCartQuantity",payload:{id:data.id}})}
+              onClick={() => dispatch({type:"increaseCartQuantity",payload:{...data}})}
             >
               +
             </button>

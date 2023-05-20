@@ -1,11 +1,16 @@
+import { useEffect } from "react";
 import { Nav, Navbar as NavbarBs } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useCartDispatch, useCartState } from "../context/CartContext";
 const Navbar = () => {
-  const state=useCartState();
-  const dispatch=useCartDispatch();
-  let allQuantity= state.reduce((curr,next)=>curr+next.quantity,0);
-  console.log(state.filter((item) => item.quantity > 0));
+  const { allCart, myCart } = useCartState();
+  const dispatch = useCartDispatch();
+  let allQuantity = allCart.reduce((curr, next) => curr + next.quantity, 0);
+  useEffect(() => {
+    dispatch({ type: "getMyCart" });
+  }, [allCart]);
+  const handleOpenCart=()=> dispatch({type:"openCart"})
+
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3 navbar">
       <div className="container">
@@ -20,7 +25,7 @@ const Navbar = () => {
             About
           </Nav.Link>
         </Nav>
-        <button className="btn btn-outline-primary rounded-circle btn-cart">
+        <button className="btn btn-outline-primary rounded-circle btn-cart" onClick={()=>handleOpenCart()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -40,4 +45,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
