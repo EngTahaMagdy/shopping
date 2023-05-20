@@ -8,7 +8,7 @@ const MyCart = () => {
   const handleClose = () => dispatch({ type: "closeCart" });
 
   const all = myCart.map((item) => (
-    <div className="d-flex">
+    <div className="d-flex mb-3">
       <img src={item.imgUrl} alt="" height="90" width="120" />
       <div className="d-flex justify-content-between align-items-center w-100 px-3">
         <div className="d-flex flex-column">
