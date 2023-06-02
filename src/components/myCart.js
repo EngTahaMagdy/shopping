@@ -7,7 +7,7 @@ const MyCart = () => {
 
   const dispatch = useCartDispatch();
   const handleClose = () => dispatch({ type: "closeCart" });
-  const all = Array.isArray(myCart)&& myCart?.map((item) => (
+  const all =  myCart?.map((item) => (
     <div className="d-flex mb-3">
       <img src={item?.imgUrl} alt="" height="90" width="120" />
       <div className="d-flex justify-content-between align-items-center w-100 px-3">
@@ -22,7 +22,7 @@ const MyCart = () => {
       </div>
     </div>
   ));
-  const sumPrice= Array.isArray(myCart)&&myCart?.reduce((current,next)=>current+next.price*next.quantity,0)
+  const sumPrice= myCart?.reduce((current,next)=>current+next.price*next.quantity,0)
   return (
     <Offcanvas show={isOpen} placement={"end"} onHide={handleClose} className={`${mode==="light"?"bg-light text-dark":"bg-dark text-light"}`}>
       <Offcanvas.Header closeButton>
