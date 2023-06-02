@@ -3,29 +3,33 @@ import { Nav, Navbar as NavbarBs } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useCartDispatch, useCartState } from "../context/CartContext";
 const Navbar = () => {
-  const { allCart, myCart } = useCartState();
+  const { allCart } = useCartState();
   const dispatch = useCartDispatch();
+  const { mode } = useCartState();
   let allQuantity = allCart.reduce((curr, next) => curr + next.quantity, 0);
   useEffect(() => {
     dispatch({ type: "getMyCart" });
   }, [allCart]);
-  const handleOpenCart=()=> dispatch({type:"openCart"})
+  const handleOpenCart = () => dispatch({ type: "openCart" });
 
   return (
-    <NavbarBs sticky="top" className="bg-white shadow-sm mb-3 navbar">
+    <NavbarBs sticky="top" className={`shadow-sm navbar ${mode=="light"?"bg-light navbar-light":"bg-dark navbar-dark"}`}>
       <div className="container">
-        <Nav className="me-auto">
-          <Nav.Link to="/" as={NavLink}>
+        <Nav className="me-auto" >
+          <Nav.Link to="/" as={NavLink} className="fw-bold">
             Home
           </Nav.Link>
-          <Nav.Link to="/store" as={NavLink}>
+          <Nav.Link to="/store" as={NavLink} className="fw-bold">
             Store
           </Nav.Link>
-          <Nav.Link to="/about" as={NavLink}>
+          <Nav.Link to="/about" as={NavLink} className="fw-bold">
             About
           </Nav.Link>
         </Nav>
-        <button className="btn btn-outline-primary rounded-circle btn-cart" onClick={()=>handleOpenCart()}>
+        <button
+          className="btn btn-outline-primary rounded-circle btn-cart"
+          onClick={() => handleOpenCart()}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -38,6 +42,17 @@ const Navbar = () => {
           <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center num-items">
             {allQuantity}
           </div>
+        </button>
+
+        <button className="btn mx-4 text-primary">
+          {mode == "light" ? (
+            <i
+              class="fas fa-moon fa-2x mx-2 pointer"
+              onClick={() => dispatch({ type: "setMode" })}
+            />
+          ) : (
+            <i class="far fa-moon fa-2x pointer" onClick={() => dispatch({ type: "setMode" })} />
+          )}
         </button>
       </div>
     </NavbarBs>

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useCartDispatch, useCartState } from "../../context/CartContext";
 export default function StoreItem({ data }) {
-  const {allCart}=useCartState();
+  const {allCart,mode}=useCartState();
   const dispatch=useCartDispatch();
   useEffect(() => {
     dispatch({type:"getItemQuantity",payload:{...data}})
   }, [])
   const quantity=allCart.find(item=>item.id==data.id)?.quantity;
   return (
-    <Card>
+    <Card className={`${mode==="dark"?"bg-card-dark":""}`}>
       <Card.Img
         variant="top"
         src={data.imgUrl}
