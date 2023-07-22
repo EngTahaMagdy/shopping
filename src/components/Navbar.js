@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleOpenCart = () => dispatch({ type: "openCart" });
 
   return (
-    <NavbarBs sticky="top" className={`shadow-sm navbar ${mode=="light"?"bg-light navbar-light":"bg-dark navbar-dark"}`}>
+    <NavbarBs sticky="top" className={`shadow-sm navbar ${mode==="light"?"bg-light navbar-light":"bg-dark navbar-dark"}`}>
       <div className="container">
         <Nav className="me-auto" >
           <Nav.Link to="/" as={NavLink} className="fw-bold">

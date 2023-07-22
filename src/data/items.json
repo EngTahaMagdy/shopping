@@ -4,36 +4,42 @@
       "id": 1,
       "name": "Samsung Galaxy S8",
       "price": 10.99,
-      "imgUrl": "https://www.course-api.com/images/cart/phone-1.png"
+      "imgUrl": "https://www.course-api.com/images/cart/phone-1.png",
+      "quantity": 0
     },
     {
       "id": 2,
       "name": "google pixel",
       "price": 1199,
-      "imgUrl": "https://www.course-api.com/images/cart/phone-2.png"
+      "imgUrl": "https://www.course-api.com/images/cart/phone-2.png",
+      "quantity": 0
     },
     {
       "id": 3,
       "name": "Redmi Note 2",
       "price": 14000,
-      "imgUrl": "https://www.course-api.com/images/cart/phone-3.png"
+      "imgUrl": "https://www.course-api.com/images/cart/phone-3.png",
+      "quantity": 0
     },{
         "id": 4,
         "name": "Laptop",
         "price": 1199,
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmQe8Ql5MqPB0H-s4SThBZJayC8txi7dAKCQ&usqp=CAU"
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmQe8Ql5MqPB0H-s4SThBZJayC8txi7dAKCQ&usqp=CAU",
+        "quantity": 0
       },
       {
         "id": 5,
         "name": "Mobile",
         "price": 14000,
-        "imgUrl": "https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2019/08/08113628/cellphone-device-electronics-699122.jpg"
+        "imgUrl": "https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2019/08/08113628/cellphone-device-electronics-699122.jpg",
+        "quantity": 0
       },
       {
         "id": 6,
         "name": "Samsung Galaxy S7",
         "price": 10.99,
-        "imgUrl": "https://www.course-api.com/images/cart/phone-4.png"
+        "imgUrl": "https://www.course-api.com/images/cart/phone-4.png",
+        "quantity": 0
       }
   ]
 

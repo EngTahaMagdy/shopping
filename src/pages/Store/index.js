@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import items from "../../data/items.json";
 import StoreItem from "./StoreItem";
+import { useCartState } from "../../context/CartContext";
 export const Store = () => {
-  const [data, setData] = useState(items);
+  const { allCart } = useCartState();
+  const [data, setData] = useState(allCart);
   const allItems =
     data.length > 0
       ? data.map((item, index) => (

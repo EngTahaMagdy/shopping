@@ -16,3 +16,23 @@ code {
 .bg-card-dark{
   background-color: #222E35 !important;
 }
+.upload-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  border: 2px dashed #ccc;
+}
+
+.upload-image label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  text-align: center;
+}
+
+.upload-image input[type="file"] {
+  display: none;
+}

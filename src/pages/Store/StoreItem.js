@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useCartDispatch, useCartState } from "../../context/CartContext";
 export default function StoreItem({ data }) {
   const {allCart,mode}=useCartState();
   const dispatch=useCartDispatch();
   useEffect(() => {
-    dispatch({type:"getItemQuantity",payload:{...data}})
+    // dispatch({type:"getItemQuantity",payload:{...data}})
   }, [])
-  const quantity=allCart.find(item=>item.id==data.id)?.quantity;
+  const quantity=allCart.find(item=>item.id===data.id)?.quantity;
   return (
     <Card className={`${mode==="dark"?"bg-card-dark":""}`}>
       <Card.Img

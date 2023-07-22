@@ -1,7 +1,12 @@
 export function CartReducer(state, action) {
   switch (action.type) {
+   
     case "getItemQuantity": {
-      if (state.allCart?.find((item) => item.id === action.payload.id) ===undefined) {
+      debugger
+      if (
+        state.allCart?.find((item) => item.id === action.payload.id) ===
+        undefined
+      ) {
         return {
           ...state,
           allCart: [
@@ -19,12 +24,15 @@ export function CartReducer(state, action) {
             ...state.allCart,
             {
               ...action.payload,
-              quantity: state.allCart.find((item) => item.id === action.payload.id)
-                ?.quantity,
+              quantity: state.allCart.find(
+                (item) => item.id === action.payload.id
+              )?.quantity,
             },
           ],
         };
       }
+
+      
     }
     case "increaseCartQuantity": {
       let clone = state.allCart;
@@ -52,14 +60,18 @@ export function CartReducer(state, action) {
     }
     case "getMyCart": {
       let cart = state.allCart.filter((item) => item.quantity > 0);
-      localStorage.setItem("shopping-cart", JSON.stringify(cart))
+      localStorage.setItem("shopping-cart", JSON.stringify(cart));
       return { ...state, myCart: cart };
     }
-    case "removeItemInCart":{
-      let allRemovedInCart=state.myCart.map((item) => item.id !== action.payload.id);
-      let resetAllItem=state.allCart.map((item) => item.id===action.payload.id?{...item,quantity:0}:{...item});
+    case "removeItemInCart": {
+      let allRemovedInCart = state.myCart.map(
+        (item) => item.id !== action.payload.id
+      );
+      let resetAllItem = state.allCart.map((item) =>
+        item.id === action.payload.id ? { ...item, quantity: 0 } : { ...item }
+      );
 
-      return {...state,allCart:resetAllItem, myCart: allRemovedInCart};
+      return { ...state, allCart: resetAllItem, myCart: allRemovedInCart };
     }
     case "getAllQuantity": {
       let sumQuantity = state.allCart.reduce(
@@ -74,8 +86,22 @@ export function CartReducer(state, action) {
     case "closeCart": {
       return { ...state, isOpen: false };
     }
-    case "setMode":{
-      return {...state, mode:state.mode=="light"?"dark":"light"}
+    case "setMode": {
+      return { ...state, mode: state.mode === "light" ? "dark" : "light" };
+    }
+    case "setItemQuantity": {
+      debugger
+      let allcart = state.allCart;
+      localStorage.setItem("all-items", JSON.stringify([...allcart,action.payload]));
+      return {
+        ...state,
+        allCart: [
+          ...state.allCart,
+          {
+            ...action.payload,
+          },
+        ],
+      };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);

@@ -12,3 +12,24 @@
     right: 0;
     transform: translate(25%,25%);
 }
+
+
+/** add item**/
+.group-input{
+    width: 50%;
+    margin: auto;
+}
+.group-input label{
+    width: 100%;
+}
+.group-input input:not([type="file"]){
+    width: 100% !important;
+    background-color: transparent;
+    border-radius: 5px;
+    border:1px solid rgb(202, 202, 202);
+    padding: 6px 10px;
+}
+.group-input input:focus-visible{
+    border:1px solid rgb(202, 202, 202);
+    outline: none;
+}

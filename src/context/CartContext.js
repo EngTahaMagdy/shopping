@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useReducer } from "react";
-import {CartReducer} from "./reducers/CartReducer"
+import { CartReducer } from "./reducers/CartReducer";
+import items from "../data/items.json";
+
 const CartContext = createContext();
 const CartDispatchContext = createContext();
-
-
 const initialState = {
-  allCart: [],
-  myCart:JSON.parse(localStorage.getItem("shopping-cart")),
+  allCart: JSON.parse(localStorage.getItem("all-items")) || items,
+  myCart: JSON.parse(localStorage.getItem("shopping-cart")),
   isOpen: false,
-  mode:"light",
+  mode: "light",
 };
 
 function useCartState() {
@@ -28,7 +28,6 @@ function useCartDispatch() {
 }
 
 function CartProvider({ children }) {
-
   const [state, dispatch] = useReducer(CartReducer, initialState);
   return (
     <CartContext.Provider value={state}>
