@@ -1,8 +1,7 @@
 export function CartReducer(state, action) {
   switch (action.type) {
-   
     case "getItemQuantity": {
-      debugger
+      debugger;
       if (
         state.allCart?.find((item) => item.id === action.payload.id) ===
         undefined
@@ -31,8 +30,6 @@ export function CartReducer(state, action) {
           ],
         };
       }
-
-      
     }
     case "increaseCartQuantity": {
       let clone = state.allCart;
@@ -90,9 +87,12 @@ export function CartReducer(state, action) {
       return { ...state, mode: state.mode === "light" ? "dark" : "light" };
     }
     case "setItemQuantity": {
-      debugger
+      debugger;
       let allcart = state.allCart;
-      localStorage.setItem("all-items", JSON.stringify([...allcart,action.payload]));
+      localStorage.setItem(
+        "all-items",
+        JSON.stringify([...allcart, action.payload])
+      );
       return {
         ...state,
         allCart: [
@@ -101,6 +101,16 @@ export function CartReducer(state, action) {
             ...action.payload,
           },
         ],
+      };
+    }
+    case "updateItems": {
+      localStorage.setItem(
+        "all-items",
+        JSON.stringify( action.payload)
+      );
+      return {
+        ...state,
+        allCart: action.payload,
       };
     }
     default: {

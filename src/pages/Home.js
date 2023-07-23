@@ -3,6 +3,7 @@ import { useCartDispatch, useCartState } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import EditProduct from "./EditProducts";
 export const Home = () => {
   const { allCart } = useCartState();
   const [AllItem, setAllItem] = useState([]);
@@ -82,7 +83,7 @@ export const Home = () => {
   });
   return (
     <div className="container">
-      <h3 className="text-center my-3">Add Item</h3>
+      <h3 className="text-center my-3">Add Product</h3>
       <form onSubmit={formik.handleSubmit}>
         <div className="group-input">
           <label for="name">Name</label>
@@ -161,6 +162,7 @@ export const Home = () => {
           </button>
         </div>
       </form>
+      <EditProduct />
     </div>
   );
 };
