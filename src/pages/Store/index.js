@@ -14,7 +14,7 @@ export const Store = () => {
       : "";
   return (
     <div className="container pt-3">
-      <h3>Store</h3>
+      <h3 >Store</h3>
       <div className="row">{allItems}</div>
     </div>
   );
