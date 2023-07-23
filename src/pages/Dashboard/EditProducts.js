@@ -3,7 +3,7 @@ import { useCartDispatch, useCartState } from "../../context/CartContext";
 import EditProductItem from "./EditProductItem";
 
 export default function EditProduct() {
-  const {allCart,mode}=useCartState();
+  const { allCart, mode } = useCartState();
   const dispatch = useCartDispatch();
   const [data, setData] = useState(allCart);
 
@@ -36,7 +36,11 @@ export default function EditProduct() {
   return (
     <div className="edit-products">
       <h3 className="text-center my-3">Edit Products</h3>
-      <table  className={`table table-striped w-75 m-auto ${mode==="dark"?"bg-card-dark text-white input-light ":""}`}>
+      <table
+        className={`table table-striped w-75 m-auto ${
+          mode === "dark" ? "bg-card-dark text-white input-light " : ""
+        }`}
+      >
         <thead>
           <tr>
             <th>No</th>

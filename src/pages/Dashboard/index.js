@@ -24,19 +24,7 @@ export const Dashboard = () => {
     setItemState((curr) => ({ ...curr, [name]: e }));
     if (name === "image") setImage(URL.createObjectURL(e));
   };
-  const addItem = () => {
-    let data = {
-      id: AllItem.length + 1,
-      name: itemState.name,
-      price: +itemState.price,
-      imgUrl: image,
-      quantity: 0,
-    };
-    dispatch({ type: "setItemQuantity", payload: { ...data } });
-    setItemState({ name: "", price: "", image: "" });
-    setImage("");
-    navigate("/store");
-  };
+
   const validationSchema = yup.object().shape({
     name: yup.string().required("Name Is Required"),
     price: yup
@@ -44,20 +32,6 @@ export const Dashboard = () => {
       .positive("Must Be Positive")
       .required("Price Is Required"),
     image: yup.mixed().required("Image Is Required"),
-    // .test(
-    //   "type",
-    //   "Only the following formats are accepted: .jpeg, .jpg, .bmp, .pdf and .doc",
-    //   (value) => {
-    //     return (
-    //       value &&
-    //       (value[0].type === "image/jpeg" ||
-    //         value[0].type === "image/bmp" ||
-    //         value[0].type === "image/png"||
-    //         value[0].type === "image/jpg"
-    //         )
-    //     );
-    //   }
-    // ),
   });
   const formik = useFormik({
     initialValues: {
