@@ -1,19 +1,21 @@
 import { Routes, Route } from "react-router-dom";
 import { useCartState } from "./context/CartContext";
-import { About } from "./pages/About";
-import { Home } from "./pages/Home";
 import { Store } from "./pages/Store";
+import { Dashboard } from "./pages/Dashboard";
 
-export default function AppRout(){
-    const {mode}=useCartState();
+export default function AppRout() {
+  const { mode } = useCartState();
 
-    return(
-        <div className={`${mode=="light"?"bg-light text-dark":"bg-dark text-light"}`}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/store" element={<Store />} />
-        </Routes>
-      </div>
-    )
+  return (
+    <div
+      className={`${
+        mode == "light" ? "bg-light text-dark" : "bg-dark text-light"
+      }`}
+    >
+      <Routes>
+        <Route path="/store" element={<Store />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </div>
+  );
 }

@@ -13,18 +13,22 @@ const Navbar = () => {
   const handleOpenCart = () => dispatch({ type: "openCart" });
 
   return (
-    <NavbarBs sticky="top" className={`shadow-sm navbar ${mode==="light"?"bg-light navbar-light":"bg-dark navbar-dark"}`}>
+    <NavbarBs
+      sticky="top"
+      className={`shadow-sm navbar ${
+        mode === "light" ? "bg-light navbar-light" : "bg-dark navbar-dark"
+      }`}
+    >
       <div className="container">
-        <Nav className="me-auto" >
-          <Nav.Link to="/" as={NavLink} className="fw-bold">
-            Home
-          </Nav.Link>
+        <Nav className="me-auto">
           <Nav.Link to="/store" as={NavLink} className="fw-bold">
             Store
           </Nav.Link>
-          <Nav.Link to="/about" as={NavLink} className="fw-bold">
-            About
+          <Nav.Link to="/dashboard" as={NavLink} className="fw-bold">
+            Dashboard
           </Nav.Link>
+
+         
         </Nav>
         <button
           className="btn btn-outline-primary rounded-circle btn-cart"
@@ -51,7 +55,10 @@ const Navbar = () => {
               onClick={() => dispatch({ type: "setMode" })}
             />
           ) : (
-            <i class="far fa-moon fa-2x pointer" onClick={() => dispatch({ type: "setMode" })} />
+            <i
+              class="far fa-moon fa-2x pointer"
+              onClick={() => dispatch({ type: "setMode" })}
+            />
           )}
         </button>
       </div>

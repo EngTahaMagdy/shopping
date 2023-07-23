@@ -2,19 +2,18 @@
 
 body {
   margin: 0;
-  font-family:"cairo", 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "cairo", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.bg-card-dark{
-  background-color: #222E35 !important;
+.bg-card-dark {
+  background-color: #222e35 !important;
 }
 .upload-image {
   display: flex;
@@ -37,7 +36,26 @@ code {
   display: none;
 }
 
-.input-error{
+.input-error {
   border: 1px solid #a51c1c !important;
+}
+.edit-products input {
+  border: 1px solid #0099cc8f;
+  border-radius: 9px;
+  padding: 7px;
+  background: #0099cc00;
+  text-align: center;
+}
+.input-light input{
+  color:#fff;
 
+}
+.no-data{
+  height: 40%;
+    margin: auto;
+}
+.no-data p{
+  color: #9d9d9d;
+    font-size: 19px;
+    font-weight: 500;
 }

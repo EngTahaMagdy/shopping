@@ -13,7 +13,9 @@
     transform: translate(25%,25%);
 }
 
-
+.navbar-nav .nav-link.active{
+    color: #0d6efdc9 !important;
+}
 /** add item**/
 .group-input{
     width: 50%;

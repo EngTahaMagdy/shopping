@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useCartDispatch, useCartState } from "../context/CartContext";
+import { useCartDispatch, useCartState } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import EditProduct from "./EditProducts";
-export const Home = () => {
+export const Dashboard = () => {
   const { allCart } = useCartState();
   const [AllItem, setAllItem] = useState([]);
   const navigate = useNavigate();
@@ -25,8 +25,6 @@ export const Home = () => {
     if (name === "image") setImage(URL.createObjectURL(e));
   };
   const addItem = () => {
-    console.log("Add item Fired");
-
     let data = {
       id: AllItem.length + 1,
       name: itemState.name,
