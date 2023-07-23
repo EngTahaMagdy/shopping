@@ -32,8 +32,8 @@ const MyCart = () => {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <div className="d-flex flex-column justify-content-between h-100">
-          <div>{all}</div>
-          <p> Total Of Price: <span className="fw-bold text-success"> {sumPrice} $</span></p>
+          <div className="h-100">{all}</div>
+          {sumPrice!==0&&<p style={{fontSize:"22px"}}> Total Of Price: <span className="fw-bold text-success"> {sumPrice} $</span></p>}
         </div>
       </Offcanvas.Body>
     </Offcanvas>
